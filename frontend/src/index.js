@@ -4,6 +4,7 @@ import "./index.css";
 import HomePage from "./landing_page/home/HomePage";
 import Pricingpage from "./landing_page/pricing/PricingPage";
 import AboutPage from "./landing_page/about/AboutPage";
+import ProductPage from "./landing_page/products/ProductPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -12,6 +13,7 @@ root.render(
       <HomePage />
       <Pricingpage />
       <AboutPage />
+      <ProductPage />
     </div>
   </React.StrictMode>
 );

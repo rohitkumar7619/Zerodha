@@ -15,7 +15,7 @@ function Pricing() {
             <i class="fa fa-long-arrow-right" aria-hidden="true"></i>{" "}
           </a>
         </div>
-        <div className="col-7"></div>
+        <div className="col-7 mb-5"></div>
       </div>
     </div>
   );

@@ -11,9 +11,6 @@ root.render(
   <React.StrictMode>
     <div>
       <HomePage />
-      <Pricingpage />
-      <AboutPage />
-      <ProductPage />
     </div>
   </React.StrictMode>
 );

@@ -12,7 +12,7 @@ function Hero() {
         <div className="col-4">
           <img src="media/images/pricingEquity.svg " alt="pricingEquity" />
           <h1 className="fs-3">Pricing</h1>
-          <p>
+          <p className="text-muted">
             All equity investment (NSE, BSE), are absolutely free - ₹ 0
             brokerage
           </p>

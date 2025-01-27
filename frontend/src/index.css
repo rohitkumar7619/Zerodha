@@ -16,3 +16,68 @@ code {
 .nav-link{
   margin-left: 40px;
 }
+
+#support-page {
+  background-color: rgb(56, 126, 209);
+  color: white;
+  padding-bottom: 40px;
+}
+
+#supportWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 140px;
+}
+
+#supportWrapper h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+#supportWrapper a {
+  color: white;
+  font-size: 1rem;
+  text-decoration: underline;
+}
+
+#support-page input {
+  width: 100%;
+  max-width: 400px;
+  padding: 15px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.help-link {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-top: 10px;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.help-link:hover {
+  color: #e3e3e3;
+}
+
+.featured-list {
+  padding-left: 20px;
+}
+
+.featured-list li {
+  margin-bottom: 10px;
+}
+
+.featured-list a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.featured-list a:hover {
+  color: #e3e3e3;
+}

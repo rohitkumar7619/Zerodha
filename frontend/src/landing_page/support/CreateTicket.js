@@ -11,7 +11,9 @@ function CreateTicket() {
 
         {/* Account Opening Section */}
         <div className="col-4">
-          <h1 className="fs-3">Account Opening</h1>
+          <h1 className="fs-3">
+            <i class="fa fa-plus-circle" aria-hidden="true"></i> Account Opening
+          </h1>
           <form className="p-3">
             <ul style={{ listStyleType: "none", padding: 0 }}>
               <li style={{ margin: "5px 0" }}>
@@ -68,7 +70,10 @@ function CreateTicket() {
 
         {/* Your Zerodha Account Section */}
         <div className="col-4">
-          <h1 className="fs-3">Your Zerodha Account</h1>
+          <h1 className="fs-3">
+            <i class="fa fa-user-circle" aria-hidden="true"></i> Your Zerodha
+            Account
+          </h1>
           <form className="p-3">
             <ul style={{ listStyleType: "none", padding: 0 }}>
               <li style={{ margin: "5px 0" }}>
@@ -125,7 +130,10 @@ function CreateTicket() {
 
         {/* Trading and Markets Section */}
         <div className="col-4">
-          <h1 className="fs-3">Trading and Markets</h1>
+          <h1 className="fs-3">
+            <i class="fa fa-bar-chart" aria-hidden="true"></i> Trading and
+            Markets
+          </h1>
           <form className="p-3">
             <ul style={{ listStyleType: "none", padding: 0 }}>
               <li style={{ margin: "5px 0" }}>
@@ -182,9 +190,11 @@ function CreateTicket() {
       </div>
 
       <div className="row mt-5">
-        {/* Account Opening Section */}
+        {/* Funds */}
         <div className="col-4">
-          <h1 className="fs-3"> Funds</h1>
+          <h1 className="fs-3">
+            <i class="fa fa-credit-card" aria-hidden="true"></i> Funds
+          </h1>
           <form className="p-3">
             <ul style={{ listStyleType: "none", padding: 0 }}>
               <li style={{ margin: "5px 0" }}>
@@ -223,9 +233,11 @@ function CreateTicket() {
           </form>
         </div>
 
-        {/* Your Zerodha Account Section */}
+        {/* Console */}
         <div className="col-4">
-          <h1 className="fs-3">Console</h1>
+          <h1 className="fs-3">
+            <i class="fa fa-codiepie" aria-hidden="true"></i> Console
+          </h1>
           <form className="p-3">
             <ul style={{ listStyleType: "none", padding: 0 }}>
               <li style={{ margin: "5px 0" }}>
@@ -280,9 +292,11 @@ function CreateTicket() {
           </form>
         </div>
 
-        {/* Trading and Markets Section */}
+        {/* Coin */}
         <div className="col-4">
-          <h1 className="fs-3">Coin</h1>
+          <h1 className="fs-3">
+            <i class="fa fa-circle-o-notch" aria-hidden="true"></i> Coin
+          </h1>
           <form className="p-3">
             <ul style={{ listStyleType: "none", padding: 0 }}>
               <li style={{ margin: "5px 0" }}>

@@ -1,4 +1,9 @@
 import React from "react";
+import WatchListItem from "./WatchListItem"; // Import the missing component
+
+import { Tooltip, Grow } from "@mui/material"; // Remove if not needed
+
+import { watchlist } from "../data/data";
 
 const WatchList = () => {
   return (
@@ -8,13 +13,17 @@ const WatchList = () => {
           type="text"
           name="search"
           id="search"
-          placeholder="Search eg:infy, bse, nifty fut weekly, gold mcx"
+          placeholder="Search eg: infy, bse, nifty fut weekly, gold mcx"
           className="search"
         />
-        <span className="counts"> 9 / 50</span>
+        <span className="counts"> {watchlist.length}</span>
       </div>
 
-      <ul className="list"></ul>
+      <ul className="list">
+        {watchlist.map((stock, index) => (
+          <WatchListItem stock={stock} key={index} />
+        ))}
+      </ul>
     </div>
   );
 };

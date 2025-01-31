@@ -1,21 +1,51 @@
-import React, { useState } from "react";
-import { Tooltip, Grow } from "@mui/material"; // Remove if not needed
+import React, { useState, useContext } from "react";
+
+import GeneralContext from "./GeneralContext";
+
+import { Tooltip, Grow } from "@mui/material";
+
 import {
   BarChartOutlined,
   KeyboardArrowDown,
   KeyboardArrowUp,
   MoreHoriz,
-} from "@mui/icons-material"; // Import icons
+} from "@mui/icons-material";
+
 import { watchlist } from "../data/data";
+
+const WatchList = () => {
+  return (
+    <div className="watchlist-container">
+      <div className="search-container">
+        <input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Search eg:infy, bse, nifty fut weekly, gold mcx"
+          className="search"
+        />
+        <span className="counts"> {watchlist.length} / 50</span>
+      </div>
+
+      <ul className="list">
+        {watchlist.map((stock, index) => {
+          return <WatchListItem stock={stock} key={index} />;
+        })}
+      </ul>
+    </div>
+  );
+};
+
+export default WatchList;
 
 const WatchListItem = ({ stock }) => {
   const [showWatchlistActions, setShowWatchlistActions] = useState(false);
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = (e) => {
     setShowWatchlistActions(true);
   };
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = (e) => {
     setShowWatchlistActions(false);
   };
 
@@ -28,40 +58,23 @@ const WatchListItem = ({ stock }) => {
           {stock.isDown ? (
             <KeyboardArrowDown className="down" />
           ) : (
-            <KeyboardArrowUp className="up" />
+            <KeyboardArrowUp className="down" />
           )}
           <span className="price">{stock.price}</span>
         </div>
       </div>
-      {showWatchlistActions && <WatchlistActions uid={stock.name} />}
+      {showWatchlistActions && <WatchListActions uid={stock.name} />}
     </li>
   );
 };
 
-const WatchList = () => {
-  return (
-    <div className="watchlist-container">
-      <div className="search-container">
-        <input
-          type="text"
-          name="search"
-          id="search"
-          placeholder="Search eg: infy, bse, nifty fut weekly, gold mcx"
-          className="search"
-        />
-        <span className="counts">{watchlist.length}</span>
-      </div>
+const WatchListActions = ({ uid }) => {
+  const generalContext = useContext(GeneralContext);
 
-      <ul className="list">
-        {watchlist.map((stock, index) => (
-          <WatchListItem stock={stock} key={index} />
-        ))}
-      </ul>
-    </div>
-  );
-};
+  const handleBuyClick = () => {
+    generalContext.openBuyWindow(uid);
+  };
 
-const WatchlistActions = ({ uid }) => {
   return (
     <span className="actions">
       <span>
@@ -70,6 +83,7 @@ const WatchlistActions = ({ uid }) => {
           placement="top"
           arrow
           TransitionComponent={Grow}
+          onClick={handleBuyClick}
         >
           <button className="buy">Buy</button>
         </Tooltip>
@@ -82,7 +96,7 @@ const WatchlistActions = ({ uid }) => {
           <button className="sell">Sell</button>
         </Tooltip>
         <Tooltip
-          title="Analytic (A)"
+          title="Analytics (A)"
           placement="top"
           arrow
           TransitionComponent={Grow}
@@ -100,5 +114,3 @@ const WatchlistActions = ({ uid }) => {
     </span>
   );
 };
-
-export default WatchList;

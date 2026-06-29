@@ -3,6 +3,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const dns = require("dns");
+dns.setDefaultResultOrder("ipv4first");
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
 
 const { HoldingsModel } = require("./model/HoldingModel");
 
@@ -14,9 +17,17 @@ const PORT = process.env.PORT || 3002;
 const url = process.env.MONGO_URL;
 
 const app = express();
+app.use(express.json());
 
 app.use(cors());
 app.use(bodyParser.json());
+
+app.use('/api/auth', require('./routes/auth'));
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Something went wrong!' });
+});
 
 app.get("/allHoldings", async (req, res) => {
   let allHoldings = await HoldingsModel.find({});

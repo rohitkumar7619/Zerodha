@@ -28,8 +28,13 @@ const DashboardPage = () => {
   }
 
   const handleGoToDashboard = () => {
-    // Redirect to the Kite Dashboard app running on Port 3001
-    window.location.href = 'http://localhost:3001';
+    // Store user info so dashboard can read it
+    if (user) {
+      localStorage.setItem('user_name', user.username || '');
+      localStorage.setItem('user_email', user.email || '');
+    }
+    // Redirect to the Kite Dashboard app running on Port 4000
+    window.location.href = 'http://localhost:4000';
   };
 
   const handleLogout = () => {

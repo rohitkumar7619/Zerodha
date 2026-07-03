@@ -5,13 +5,16 @@ const Positions = () => {
   const [allPositions, setAllPositions] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3002/allPositions")
-      .then((res) => {
+    const fetchPositions = async () => {
+      try {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/allPositions`);
         console.log(res.data);
         setAllPositions(res.data);
-      })
-      .catch((error) => console.error("Error fetching positions:", error));
+      } catch (error) {
+        console.error("Error fetching positions:", error);
+      }
+    };
+    fetchPositions();
   }, []);
 
   return (

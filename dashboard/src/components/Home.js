@@ -10,6 +10,15 @@ const Home = () => {
 
   useEffect(() => {
     const validateToken = async () => {
+      // Check if token was passed via URL query param (from frontend app)
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlToken = urlParams.get("token");
+      if (urlToken) {
+        localStorage.setItem("token", urlToken);
+        // Clean the token from the URL without triggering a reload
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+
       const token = localStorage.getItem("token");
       if (!token) {
         setAuthState("unauthenticated");

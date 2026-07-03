@@ -28,8 +28,13 @@ const DashboardPage = () => {
   }
 
   const handleGoToDashboard = () => {
-    // Redirect to the Kite Dashboard app running on Port 4000
-    window.location.href = 'http://localhost:4000';
+    // Pass the JWT token as a query param so the dashboard (different port/origin)
+    // can read it and store in its own localStorage
+    const token = localStorage.getItem('token');
+    const dashboardUrl = token
+      ? `http://localhost:4000?token=${encodeURIComponent(token)}`
+      : 'http://localhost:4000';
+    window.location.href = dashboardUrl;
   };
 
   const handleLogout = () => {

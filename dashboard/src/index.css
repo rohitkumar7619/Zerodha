@@ -842,5 +842,135 @@ hr {
   background-color: rgb(212, 212, 212);
 }
 
+/* ── Profile Dropdown ─────────────────────────────────── */
+.profile-wrapper {
+  position: relative;
+}
 
+.dropdown-caret {
+  font-size: 0.55rem;
+  color: rgb(150, 150, 150);
+  margin-left: 6px;
+  user-select: none;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 240px;
+  background: #fff;
+  border: 1px solid rgb(229, 229, 229);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+  z-index: 999;
+  overflow: hidden;
+  animation: dropdownFadeIn 0.18s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 16px 12px;
+}
+
+.dropdown-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f56835, #ff9068);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dropdown-user-details {
+  min-width: 0;
+}
+
+.dropdown-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgb(45, 45, 45);
+  margin: 0 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-email {
+  font-size: 0.73rem;
+  color: rgb(140, 140, 140);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: rgb(240, 240, 240);
+  margin: 0;
+}
+
+.dropdown-item {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 0.82rem;
+  color: rgb(60, 60, 60);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.dropdown-item:hover {
+  background: rgb(248, 248, 248);
+}
+
+.dropdown-info-row {
+  justify-content: space-between;
+  cursor: default;
+}
+
+.dropdown-info-row:hover {
+  background: none;
+}
+
+.dropdown-label {
+  color: rgb(150, 150, 150);
+  font-size: 0.76rem;
+}
+
+.dropdown-value {
+  color: rgb(60, 60, 60);
+  font-size: 0.78rem;
+  font-family: monospace;
+}
+
+.dropdown-action {
+  gap: 8px;
+}
+
+.dropdown-logout {
+  color: rgb(220, 60, 40);
+}
+
+.dropdown-logout:hover {
+  background: rgb(255, 245, 244);
+}
 

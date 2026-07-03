@@ -28,8 +28,8 @@ const DashboardPage = () => {
   }
 
   const handleGoToDashboard = () => {
-    // Redirect to the Kite Dashboard app running on Port 3001
-    window.location.href = 'http://localhost:3001';
+    // Redirect to the Kite Dashboard app running on Port 4000
+    window.location.href = 'http://localhost:4000';
   };
 
   const handleLogout = () => {

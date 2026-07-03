@@ -1,9 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
+  const dropdownRef = useRef(null);
+
+  // Decode JWT token to get user info
+  useEffect(() => {
+    try {
+      const token = localStorage.getItem("token");
+      if (token) {
+        const payload = JSON.parse(atob(token.split(".")[1]));
+        setUserInfo(payload);
+      }
+    } catch (e) {
+      // Token invalid or absent
+    }
+  }, []);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsProfileDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
@@ -13,8 +39,21 @@ const Menu = () => {
     setIsProfileDropdownOpen(!isProfileDropdownOpen);
   };
 
+  const handleGoToLandingPage = () => {
+    window.location.href = "http://localhost:3000";
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "http://localhost:3000/login";
+  };
+
   const menuClass = "menu";
   const activeMenuClass = "menu selected";
+
+  // Build avatar initials and display name
+  const displayName = userInfo?.username || userInfo?.email || "User";
+  const avatarText = displayName.slice(0, 2).toUpperCase();
 
   return (
     <div className="menu-container">
@@ -89,9 +128,53 @@ const Menu = () => {
           </li>
         </ul>
         <hr />
-        <div className="profile" onClick={handleProfileClick}>
-          <div className="avatar">ZU</div>
-          <p className="username">USERID</p>
+
+        {/* Profile with dropdown */}
+        <div className="profile-wrapper" ref={dropdownRef}>
+          <div className="profile" onClick={handleProfileClick}>
+            <div className="avatar">{avatarText}</div>
+            <p className="username">{displayName}</p>
+            <span className="dropdown-caret">{isProfileDropdownOpen ? "▲" : "▼"}</span>
+          </div>
+
+          {isProfileDropdownOpen && (
+            <div className="profile-dropdown">
+              {/* User Info Header */}
+              <div className="dropdown-user-info">
+                <div className="dropdown-avatar">{avatarText}</div>
+                <div className="dropdown-user-details">
+                  <p className="dropdown-name">{userInfo?.username || "User"}</p>
+                  <p className="dropdown-email">{userInfo?.email || ""}</p>
+                </div>
+              </div>
+
+              <div className="dropdown-divider" />
+
+              {/* User ID / Account Info */}
+              {userInfo?.id && (
+                <div className="dropdown-item dropdown-info-row">
+                  <span className="dropdown-label">Account ID</span>
+                  <span className="dropdown-value">{String(userInfo.id).slice(0, 8)}…</span>
+                </div>
+              )}
+
+              <div className="dropdown-divider" />
+
+              {/* Actions */}
+              <button
+                className="dropdown-item dropdown-action"
+                onClick={handleGoToLandingPage}
+              >
+                🏠 Go to Landing Page
+              </button>
+              <button
+                className="dropdown-item dropdown-action dropdown-logout"
+                onClick={handleLogout}
+              >
+                🚪 Logout
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

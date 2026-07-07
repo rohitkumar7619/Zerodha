@@ -8,6 +8,9 @@ frontend/build/
 
 # Environment files
 backend/.env
+frontend/.env
+dashboard/.env
+dashboard/.env.local.bak
 
 # Cache
 */.cache/

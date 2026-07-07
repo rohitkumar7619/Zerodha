@@ -20,7 +20,12 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:4000'],
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:4000',
+    'https://zerodha-frontend.onrender.com',
+    'https://zerodha-dashboard.onrender.com',
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
@@ -53,9 +58,13 @@ app.post("/newOrder", async (req, res) => {
     mode: req.body.mode,
   });
 
-  newOrder.save();
-
-  res.send("order save");
+  try {
+    await newOrder.save();
+    res.json({ success: true, message: "Order saved" });
+  } catch (err) {
+    console.error("Order save error:", err);
+    res.status(500).json({ error: "Failed to save order" });
+  }
 });
 
 app.listen(PORT, () => {

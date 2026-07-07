@@ -31,9 +31,10 @@ const DashboardPage = () => {
     // Pass the JWT token as a query param so the dashboard (different port/origin)
     // can read it and store in its own localStorage
     const token = localStorage.getItem('token');
+    const DASHBOARD_URL = process.env.REACT_APP_DASHBOARD_URL || 'http://localhost:4000';
     const dashboardUrl = token
-      ? `http://localhost:4000?token=${encodeURIComponent(token)}`
-      : 'http://localhost:4000';
+      ? `${DASHBOARD_URL}?token=${encodeURIComponent(token)}`
+      : DASHBOARD_URL;
     window.location.href = dashboardUrl;
   };
 

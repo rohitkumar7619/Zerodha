@@ -25,6 +25,7 @@ app.use(cors({
     'http://localhost:4000',
     'https://zerodha-frontend-sg9p.onrender.com',
     'https://zerodha-frontend.onrender.com',
+    'https://zerodha-dashboard-qyax.onrender.com',
     'https://zerodha-dashboard.onrender.com',
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],

@@ -1,12 +1,12 @@
 # 🚀 Render Deployment Guide — Zerodha Clone
 
-This guide walks you through deploying all **three services** of this project on [Render.com](https://render.com):
+This guide walks you through deploying all **three services** of this monorepo on [Render.com](https://render.com).
 
-| Service | Type | Directory |
-|---------|------|-----------|
-| **Backend** | Node.js Web Service | `backend/` |
-| **Frontend** | Static Site (React) | `frontend/` |
-| **Dashboard** | Static Site (React) | `dashboard/` |
+| Service | Type | Directory | Local Port |
+|---------|------|-----------|------------|
+| **Backend** | Node.js Web Service | `backend/` | `3002` |
+| **Frontend** | Static Site (React) | `frontend/` | `3000` |
+| **Dashboard** | Static Site (React) | `dashboard/` | `4000` |
 
 ---
 

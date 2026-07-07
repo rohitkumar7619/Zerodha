@@ -23,6 +23,7 @@ app.use(cors({
   origin: [
     'http://localhost:3000',
     'http://localhost:4000',
+    'https://zerodha-frontend-sg9p.onrender.com',
     'https://zerodha-frontend.onrender.com',
     'https://zerodha-dashboard.onrender.com',
   ],

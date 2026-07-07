@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Dashboard from "./Dashboard";
 import TopBar from "./TopBar";
 
-const FRONTEND_URL = "http://localhost:3000";
-const API_URL = "http://localhost:3002/api/auth";
+const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || "http://localhost:3000";
+const API_URL = `${process.env.REACT_APP_API_URL || "http://localhost:3002"}/api/auth`;
 
 const Home = () => {
   const [authState, setAuthState] = useState("loading"); // "loading" | "authenticated" | "unauthenticated"

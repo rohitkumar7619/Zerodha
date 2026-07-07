@@ -39,13 +39,15 @@ const Menu = () => {
     setIsProfileDropdownOpen(!isProfileDropdownOpen);
   };
 
+  const frontendUrl = process.env.REACT_APP_FRONTEND_URL || "http://localhost:3000";
+
   const handleGoToLandingPage = () => {
-    window.location.href = "http://localhost:3000";
+    window.location.href = frontendUrl;
   };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    window.location.href = "http://localhost:3000/login";
+    window.location.href = `${frontendUrl}/login`;
   };
 
   const menuClass = "menu";
